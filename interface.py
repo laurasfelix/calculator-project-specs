@@ -14,8 +14,6 @@ import sys
 
 def save(dictionary):
     f = open("TraderLatinas.txt", "a")  # opens file for appending to it
-    # for x in dictionary:
-    #     f.write("{" + x + ": " + dictionary[x]+"}")
     f.write(str(dictionary) + ", ")  # writes dictionary as a string to file
     f.close()  # closes it for posterior use
 
@@ -24,17 +22,17 @@ def save(dictionary):
 
 def loop(dictionary):
     user_input = input("What's your fav stock? ")  # input from user
-    # goes into calc, function that returns the alpha
-    alpha = calc.calc(user_input)
-    if "$" in user_input.strip():  # escape
+    if "$" in user_input.strip():  # escape key
         sys.exit()
-    elif user_input.lower().strip() == "help":  # help
+    elif user_input.lower().strip() == "help":  # help key
         print("\033[1;31;41m There are 3 commands that you can use: Buy, Sell, and $. Buy: You buy a stock, we tell you if its a good decision. Sell: You sell a stock, we tell you if its a good decision. $: Exit the trading calculator")
         print("\033[0m")
         loop(dictionary)
+    # goes into calc, function that returns the alpha
 
     else:
         # another info from user, our two operations
+        alpha = calc.calc(user_input)
         option = input("Do you want to buy or sell? ")
         if user_input not in dictionary:
 
